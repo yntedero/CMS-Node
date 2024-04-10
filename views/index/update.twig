@@ -1,0 +1,57 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <div class="container mt-5" style="background-color: lightgrey; border-radius: 10px; ">
+        <h1 style="margin-bottom: 20px">Aktualizacia posta:</h1>
+        {% for post in post %}
+            <form action="/post/update/{{ postId }}" method="post">
+                <div class="card mt-2">
+                    <div class="card-header">Zmente udaje</div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nazov:</label>
+                            <input type="text" class="form-control" name="name" value="{{ post.name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Popis:</label>
+                            <textarea class="form-control" name="description">{{ post.description }}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="type" class="form-label">Typ:</label>
+                            <select class="form-select" name="type">
+                                <option value="Koncert">Koncert</option>
+                                <option value="Kino">Kino</option>
+                                <option value="Festival">Festival</option>
+                                <option value="Divadlo">Divadlo</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="event_date" class="form-label">Datum konania:</label>
+                            <input type="datetime-local" class="form-control" name="event_date" value="{{ post.event_date | date("Y-m-d\\TH:i") }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Miesto konania:</label>
+                            <input type="text" class="form-control" name="city" value="{{ post.city }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="region" class="form-label">Region:</label>
+                            <select class="form-select" name="region">
+                                <option value="Bratislavský">Bratislavský kraj</option>
+                                <option value="Trnavský">Trnavský kraj</option>
+                                <option value="Trenčiansky">Trenčiansky kraj</option>
+                                <option value="Žilinský">Žilinský kraj</option>
+                                <option value="Nitriansky">Nitriansky kraj</option>
+                                <option value="Banskobystrický">Banskobystrický kraj</option>
+                                <option value="Prešovský">Prešovský kraj</option>
+                                <option value="Košický">Košický kraj</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" class="btn btn-success float-end" value="Odoslať">
+                    </div>
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <!-- Formular na zmenu hesla -->
+    <div class="row">
+        <div class="col-4 offset-4">
+            <form action="/user/check" method="post" class="mt-4">
+                <div class="card">
+                    <div class="card-header">Prihláste sa, prosím</div>
+                    <div class="card-body">
+                        <label>Prihlasovacie meno</label>
+                        <input class="form-control" type="text" name="username" placeholder="Zadajte Vaše prihlasovacie meno.">
+                        <label>Heslo</label>
+                        <input class="form-control" type="password" name="password" placeholder="Zadajte Vaše prihlasovacie heslo.">
+                        <input class="btn btn-success mt-4 float-end" type="submit" value="Prihlásiť sa">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

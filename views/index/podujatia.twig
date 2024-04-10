@@ -1,0 +1,46 @@
+{% extends '../base.twig' %}
+
+{% block content %}
+    <div class="container mt-4" style="background-color: #333; padding: 20px; border-radius: 20px; color: white;">
+        <h1 style="color: white;">Aktualne podujatia:</h1>
+
+        <div class="row">
+            <!-- Dropdown for sorting options -->
+            <div class="col-md-4 mt-3">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: red;">
+                        Zoradiť podľa:
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                        <li><a class="dropdown-item" href="/post/orderbydate"><i class="fa-solid fa-calendar"></i>  Zoradiť podľa dátumu</a></li>
+                        <li><a class="dropdown-item" href="/post/orderbyname"><i class="fa-solid fa-arrow-down-a-z"></i>  Zoradiť podľa názvu</a></li>
+                        <li><a class="dropdown-item" href="/post/orderbyregion"><i class="fa-solid fa-location-pin"></i>  Zoradiť podľa regiónu</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loop to display posts -->
+        <div class="row mt-4">
+            {% for post in posts %}
+                <div class="col-md-6">
+                    <div class="card p-3 mb-4" style="background-color: #f5f5f5; color: dodgerblue;">
+                        <a href="/post/pod_info/{{ post.id }}" class="text-decoration-none">
+                            <div class="float-start">
+                                <h2>{{ post.name }}</h2> <br>
+                                <h4>{{ post.city }}</h4>
+                            </div>
+                            <div class="float-end">
+                                <p style="color: red;">{{ post.type }}</p> <br>
+                                <p style="color: green;">{{ post.region }}</p> <br>
+                                <p>{{ post.event_date | date('d.m.Y') }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Add a horizontal line between posts -->
+                <hr style="width: 100%; background-color: darkgrey;">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
